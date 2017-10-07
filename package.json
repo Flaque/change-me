@@ -1,0 +1,22 @@
+{
+  "name": "change-me",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Flaque/change-me.git",
+  "author": "Flaqueeau <econrad@zagmail.gonzaga.edu>",
+  "license": "MIT",
+  "dependencies": {
+    "@react-mutate/core": "^0.3.6",
+    "brace": "^0.10.0",
+    "next": "^3.2.2",
+    "react": "15",
+    "react-ace": "^5.2.2",
+    "react-dom": "15",
+    "styled-components": "^2.2.1"
+  },
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  }
+}
