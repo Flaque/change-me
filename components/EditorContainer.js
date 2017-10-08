@@ -1,11 +1,14 @@
-import { JSEditor, JSONEditor } from "./Editor.js";
-import Title from "./Title.js";
+import EditorsView from "./EditorsView.js";
 import styled from "styled-components";
+import Button from "./Button.js";
 
-const FlexContainer = styled.div`
+require("es6-promise").polyfill();
+require("isomorphic-fetch");
+
+const ColumnContainer = styled.div`
   display: flex;
-  width: 100%;
-  flex-direction: row;
+  flex-direction: column;
+  height: 100%;
   justify-content: center;
 `;
 
@@ -20,6 +23,7 @@ class EditorContainer extends React.Component {
 
     this.onJSCodeChange = this.onJSCodeChange.bind(this);
     this.onJSONCodeChange = this.onJSONCodeChange.bind(this);
+    this.onSubmitCode = this.onSubmitCode.bind(this);
   }
 
   onJSCodeChange(code) {
@@ -30,27 +34,22 @@ class EditorContainer extends React.Component {
     this.setState({ jsonCode: code });
   }
 
+  onSubmitCode() {
+    fetch("/upload", {
+      method: "POST",
+      body: { javascript: this.state.javascriptCode, json: this.state.json }
+    });
+  }
+
   render() {
     return (
-      <FlexContainer>
-        <div>
-          <Title>index.js</Title>
-          <JSEditor
-            onChange={this.onJSCodeChange}
-            name="js"
-            value={this.state.javascriptCode}
-          />
-        </div>
+      <ColumnContainer>
+        <EditorsView />
 
         <div>
-          <Title>package.json</Title>
-          <JSONEditor
-            onChange={this.onJSONCodeChange}
-            name="json"
-            value={this.state.jsonCode}
-          />
+          <Button onClick={() => console.log("clicked")}> Upload </Button>
         </div>
-      </FlexContainer>
+      </ColumnContainer>
     );
   }
 }

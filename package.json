@@ -8,6 +8,9 @@
   "dependencies": {
     "@react-mutate/core": "^0.3.6",
     "brace": "^0.10.0",
+    "es6-promise": "^4.1.1",
+    "express": "^4.16.1",
+    "isomorphic-fetch": "^2.2.1",
     "next": "^3.2.2",
     "react": "15",
     "react-ace": "^5.2.2",
@@ -15,7 +18,7 @@
     "styled-components": "^2.2.1"
   },
   "scripts": {
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
     "start": "next start"
   }
